@@ -37,9 +37,9 @@ My work on this plugin included:
 ### Manual Installation
 1. Copy the plugin folder into:
 
-   
+```
 {your/moodle}/local/survey
-
+```
 
 2. Log in as an administrator and visit:
 
@@ -49,8 +49,9 @@ My work on this plugin included:
 
 Alternatively, run:
 
+```
 php admin/cli/upgrade.php
-
+```
 
 ## Technologies Used
 - PHP
