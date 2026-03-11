@@ -1,4 +1,4 @@
-# Moodle Local Plugin – Subject (local_subject)
+# Moodle Local Plugin – Survey (local_survey)
 
 ## Overview
 `local_survey` is a Moodle local plugin that allows administrators to create surveys and collect responses from students within the Moodle platform. It provides a simple way to create surveys with multiple questions and gather feedback directly inside the LMS.
