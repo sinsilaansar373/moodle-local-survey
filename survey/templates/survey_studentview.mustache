@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-eAubMY/SUmBbGzxBT+2fS8xDwQCgFQYMyZc+R9jK7+UaD6Ugk6hvqlxjv73qV+qjK0bSw5Z+XrlvJ0CpdqLEfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+      integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q"
+      crossorigin="anonymous"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+<link href='https://fonts.googleapis.com/css?family=Artifika' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Averia Serif Libre' rel='stylesheet'>
+</head>
+<style>
+body{
+  font-family: 'Averia Serif Libre';
+}
+</style>
+  <body>
+    <!--<header><h1 class="title">Survey</h1></header>-->
+<form method="POST" action="submit.php">
+    <div class="row mt-5">
+        <div class="col-12">
+   
+          {{#survey}}
+                <div class="note">
+                    <h2 class="sub text-center pb-3" style="text-decoration: underline;"><br>{{surname}}</h2>
+                    <ol>
+                    {{#q_survey}}
+                        <li><p class="font">{{survey_question}}</p></li>
+                        <div class="imojis">
+                            {{#ans.imagePaths}}
+                              <img src="{{src}}" alt="Image Description" width="30" height="30" style="margin-right: 10px;" title="{{answer}}"><input type='radio' name='answer[{{id2}}]' value='{{id}}'> 
+                            {{/ans.imagePaths}}  
+                        </div>
+                    {{/q_survey}}
+                    </ol>
+                </div>
+                <br>
+                <div class="text-center">
+    <button class="btn btn-secondary" type="submit">Submit</button>
+    </div>
+    <br><br>
+          {{/survey}}
+           {{^survey}}
+           <h5 align="center"><font color="red">currently there is no survey is available</font></h5>
+           {{/survey}}
+
+        </div>     
+    </div> 
+    
+</form> 
+ 
+  </body>
+</html>

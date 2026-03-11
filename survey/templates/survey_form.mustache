@@ -1,0 +1,29 @@
+<form action="{{ action }}" method="post">
+    <label for="surveyname">Survey Name:</label>
+    <input type="text" id="surveyname" name="surname" value="{{ surname }}" required>
+
+    <label for="surveyfrom">From:</label>
+    <input type="date" id="surveyfrom" name="surveyfrom" value="{{ surveyfrom }}" required>
+
+    <label for="surveyto">To:</label>
+    <input type="date" id="surveyto" name="surveyto" value="{{ surveyto }}" required>
+
+    <label for="question1">Question 1:</label>
+    <input type="text" id="question1" name="question1" value="{{ question1 }}" required>
+
+    <!-- Additional questions can be added dynamically -->
+
+    <div id="additional-questions">
+        <!-- Additional question template -->
+        {{#questions}}
+        <div class="question">
+            <label for="{{ questionId }}">Question {{ questionIndex }}:</label>
+            <input type="text" id="{{ questionId }}" name="questions[]" value="{{ question }}" required>
+        </div>
+        {{/questions}}
+    </div>
+
+    <button type="button" onclick="addQuestion()">Add Question</button>
+
+    <input type="submit" value="Submit">
+</form>

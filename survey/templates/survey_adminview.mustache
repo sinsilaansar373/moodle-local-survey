@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-eAubMY/SUmBbGzxBT+2fS8xDwQCgFQYMyZc+R9jK7+UaD6Ugk6hvqlxjv73qV+qjK0bSw5Z+XrlvJ0CpdqLEfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+      integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q"
+      crossorigin="anonymous"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link href='https://fonts.googleapis.com/css?family=Artifika' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Averia Serif Libre' rel='stylesheet'>
+</head>
+
+<style>
+.sub{
+  font-family: 'Averia Serif Libre';
+}
+p{
+  font-family: 'Averia Serif Libre';
+}
+li{
+    font-family: 'Averia Serif Libre';
+    font-size:large;
+
+}
+.button-container {
+    display: inline-block;
+}
+
+</style>
+
+  <body>
+    <header><h1 class="title">Survey</h1></header>
+            <div class="form-group">
+                      <label for="selectYear">Select Year</label>
+                      <select class="form-select" aria-label="Select Start Year" id="yearDropdown" onchange="onYearChange()" style="width:500px;">
+                          <option value="" id="" selected>------------ Select Year ------------</option>
+                          {{#templateData}}
+                              {{#startYearOptions}}
+                                  <option value="{{label}}">{{label}}</option>
+                              {{/startYearOptions}}
+                          {{/templateData}}
+                      </select>
+            </div>
+            <br>
+            <a href="{{answer}}">
+                <button type="button" class="btn btn-outline-secondary del">View survey Answers</button>
+            </a>
+            <div class="row mt-5"  id="surveytable">
+                <div class="col-12" >
+                    {{#survey}}
+                        <div class="note">
+                          {{#disabled}}
+                              <h2 class="sub" style="text-decoration: underline;"><br>{{surname}}<a href={{edit_survey}}={{id}}&school_id"><i class='fas fa-pencil-alt' style='font-size:20px'></i></a></h2>              
+                              <p style="color: #867c7c;">This survey is no longer available</p>
+                              <div class="hide"> 
+                                      <ol>                
+                                            {{#q_survey}}                                                     
+                                                  <li>{{survey_question}}</li>                   
+                                            {{/q_survey}}
+                                      </ol>
+                                      <div class="button-container">
+                                            <a href="{{delete}}={{id}}" class="mr-3">
+                                                <button type="button" class="btn btn-outline-secondary del">Delete survey</button>
+                                            </a>
+                                      </div>
+                              </div>
+                              <div class="icon-d">
+                                    <i class='fas fa-angle-down arrow transition-button' style='font-size:24px'></i>
+                              </div>  
+                          {{/disabled}}
+                          {{#disabled1}}
+                              <h2 class="sub" style="text-decoration: underline;"><br>{{surname}}<a href={{edit_survey}}={{id}}&school_id><i class='fas fa-pencil-alt' style='font-size:20px'></i></a></h2>              
+                              <p style="color: red;">This will be available from {{survey_from}}</p>
+                              <div class="hide"> 
+                                    <ol>                
+                                          {{#q_survey}}                                                     
+                                                <li>{{survey_question}}</li>                   
+                                          {{/q_survey}}
+                                    </ol>
+                                    <div class="button-container">
+                                        <a href="{{delete}}={{id}}" class="mr-3">
+                                            <button type="button" class="btn btn-outline-secondary del">Delete survey</button>
+                                        </a>
+                                    </div>
+                              </div>
+                              <div class="icon-d">
+                                    <i class='fas fa-angle-down arrow transition-button' style='font-size:24px'></i>
+                              </div>  
+                          {{/disabled1}}
+                          {{#disabled2}}
+                              <h3 class="sub" style="text-decoration: underline;"><br>{{surname}}<a href={{edit_survey}}={{id}}&school_id><i class='fas fa-pencil-alt' style='font-size:20px'></i></a></h3>              
+                              <p style="color:green;">{{survey_from}} - {{survey_to}}</p>
+                                <div class="hide">   
+                                      <ol>              
+                                          {{#q_survey}}                                                     
+                                                <li>{{survey_question}}</li>                  
+                                          {{/q_survey}}
+                                      </ol>
+                                      <div class="button-container">
+                                            <a href="{{delete}}={{id}}" class="mr-3">
+                                                <button type="button" class="btn btn-outline-secondary del">Delete survey</button>
+                                            </a>
+                                      </div>
+                                </div>
+                                <div class="icon-d">
+                                      <i class='fas fa-angle-down arrow transition-button' style='font-size:24px'></i>
+                                </div>  
+                          {{/disabled2}}                
+                        </div><br>
+                    {{/survey}}
+                </div>     
+            </div>
+            <div class="text-center">
+                <a href={{create_survey}}><button class="btn btn-secondary" type="submit">Add survey</button></a>
+            </div>
+    <script>
+        function onYearChange() {
+            var url = window.location.href;
+            var params = new URLSearchParams(url.split('?')[1]);
+            var schoolid = params.get('id');
+            
+            var selectedYear = $('#yearDropdown').val();
+            
+            year = selectedYear.split('-')
+            year1 = year[0].split('/')
+            year2 = year[1].split('/')
+            //alert(year1[2]+" "+year2[2])
+        year3=year1[2]
+        year4=year2[2]
+          // 
+            $.ajax({
+            
+                type: 'POST',
+                url: 'survey_test.php',
+                data: {year1: year3, year2:year4, schoolid:schoolid },
+                success: function(response) {
+                //alert(response );
+                  //$("#demo").html(response);
+                    $('#surveytable').html(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr);
+                }
+            });
+        }
+    </script>
+  </body>
+</html>

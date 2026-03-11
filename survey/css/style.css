@@ -1,0 +1,155 @@
+/* My Starter Template */
+/* CSS TO STUDENT VIEW  */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  /* font-family: 'Space Mono', monospace; */
+  line-height: 1.6;
+  background: rgb(197, 188, 192);
+  color: black;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 900px;
+}
+
+header {
+  text-align: center;
+  margin: 1em auto;
+}
+
+.h2{
+    font-size:large;
+}
+.form-control{
+    background-color: rgb(253, 239, 239);
+    border-color: rgb(253, 239, 239);
+}
+.form-control:focus{
+    background-color: rgb(253, 239, 239);
+    border-color: rgb(253, 239, 239);
+    box-shadow: none;
+}
+.custom-select{
+    background-color: rgb(253, 239, 239) !important;
+    border-color: rgb(253, 239, 239) !important;
+    box-shadow: none !important;
+
+}
+
+.journal-label {
+  display: block;
+  line-height: 1.6;
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: lightcoral;
+}
+
+.btn-primary{
+    background-color: rgb(187, 60, 60);
+    border-color: rgb(187, 60, 60);
+}
+.btn-primary:hover {
+    background-color: rgb(233, 91, 91);
+    border-color: rgb(233, 91, 91);
+  }
+  .btn-primary:focus {
+    background-color: rgb(233, 91, 91);
+    border-color: rgb(233, 91, 91);
+  }
+  .btn-primary:active {
+    background-color: rgb(233, 91, 91) !important;
+    border-color: rgb(233, 91, 91);
+  }
+  .title{
+    color: rgb(5, 0, 0);
+  }
+
+
+
+@media (min-width: 769px) {
+  .entry-text-box {
+    width: 40em;
+    height: 20em;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 2px;
+    border: unset;
+    background-color: lightgoldenrodyellow;
+    font-family: 'Space Mono', monospace;
+  }
+}
+
+.note{
+  background-color: rgb(214, 208, 211);
+  padding-left:10px;
+  border:1px rgb(0, 0, 0) solid;
+  border-radius: 10px;
+
+  
+}
+/* .fas{
+  padding-left: 50%;
+  color: rgb(0, 0, 0);
+} */
+.fa-pencil-alt{
+  color: black !important;
+}
+.sub{
+  color: rgb(0, 0, 0);
+  font-weight: lighter;
+}
+
+
+.show {
+display: block;
+}
+.fa-pencil-alt{
+  padding-left:0.5%;
+  color: lightcoral;
+}
+.delete{
+  padding-top: 50%;
+  
+}
+.del{
+  color: black;
+}
+.del:hover{
+  color: black;
+}
+.imojis{
+  padding-bottom: 20px;
+}
+.fas{
+  padding-left: 50%;
+}
+.hide {
+  display: none;
+  font-size : medium;
+  }
+  .hide1 {
+    display: none;
+    font-size : medium;
+    }
+  .fa-pencil-alt{
+    padding-left:0.5%;
+  }
+.font{
+  color: rgb(0, 0, 0);
+  font-size: large;
+}
+
+
+  .rotate {
+    transform: rotate(180deg); /* Rotate the arrow icon */
+  }
